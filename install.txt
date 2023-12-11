@@ -1,0 +1,30 @@
+
+MUI
+npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/icons-material
+
+# taiwind
+
+npm install -D tailwindcss
+npx tailwindcss init
+
+Add the paths to all of your template files in your tailwind.config.js file.
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+https://tailwindui.com/components/ecommerce/components/store-navigation
+npm i @heroicons/react
+npm i @headlessui/react       
+ npm i react-alice-carousel
+
+ implement: Navigation.jsx, HomeCarosel(MainCarosel.jsx + MainCaroselData.jsx), HomeSectionCard.jsx, HomeSectionCarosel.jsx
+https://youtu.be/3jjxRz_egNY?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=4353
