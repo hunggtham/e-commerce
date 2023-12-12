@@ -19,7 +19,6 @@ const HomePage = () => {
         <HomeSectionCarosel data={dressPage1} sectionName={"4.Girl's Dress"} />
         <HomeSectionCarosel data={lengha_page1} sectionName={"5.Men's Shirt"} />
       </div>
-      <Footer />
     </div>
   );
 };

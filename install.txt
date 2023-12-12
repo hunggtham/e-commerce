@@ -26,14 +26,14 @@ npm i @heroicons/react
 npm i @headlessui/react       
  npm i react-alice-carousel
 
- implement: Navigation.jsx, HomeCarosel(MainCarosel.jsx + MainCaroselData.jsx), HomeSectionCard.jsx, HomeSectionCarosel.jsx
-HomePage: add HomeSectionCarosel
+Customer/compement: implement: Navigation.jsx, HomeCarosel(MainCarosel.jsx + MainCaroselData.jsx), HomeSectionCard.jsx, HomeSectionCarosel.jsx
+Customer/compement:HomePage: add HomeSectionCarosel
 
 https://youtu.be/3jjxRz_egNY?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=5760
 
 add props for each catagory: <HomeSectionCarosel data={mens_kurta} sectionName={"Men's Clothes"} />
 
-Footer
+Customer/compement Footer
 https://youtu.be/3jjxRz_egNY?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=6725
 
 https://youtu.be/3jjxRz_egNY?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=6785
@@ -41,4 +41,5 @@ https://youtu.be/3jjxRz_egNY?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=6785
 done body & start product page
 https://youtu.be/3jjxRz_egNY?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=7542
 
-
+Customer/compement Product/Product.jsx
+https://youtu.be/3jjxRz_egNY?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=8623
