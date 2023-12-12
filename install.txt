@@ -27,4 +27,6 @@ npm i @headlessui/react
  npm i react-alice-carousel
 
  implement: Navigation.jsx, HomeCarosel(MainCarosel.jsx + MainCaroselData.jsx), HomeSectionCard.jsx, HomeSectionCarosel.jsx
-https://youtu.be/3jjxRz_egNY?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=4353
+HomePage: add HomeSectionCarosel
+
+https://youtu.be/3jjxRz_egNY?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=5760
