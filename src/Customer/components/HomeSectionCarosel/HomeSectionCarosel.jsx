@@ -31,7 +31,7 @@ const HomeSectionCarosel = ({ data, sectionName }) => {
     .slice(0, 15)
     .map((item) => <HomeSectionCard product={item} />);
   return (
-    <div className="relative items-center flex-row justify-center lg:px-8 border">
+    <div className="relative items-center flex-row justify-center lg:px-8 border z-10">
       <h2 className="text-2xl font-extrabold text-gray-800 py-5 underline-offset-4">
         {sectionName}
       </h2>
@@ -42,7 +42,6 @@ const HomeSectionCarosel = ({ data, sectionName }) => {
             onClick={() => {
               slidePrev();
             }}
-            className="z-50"
             sx={{
               position: "absolute",
               top: "8rem",
@@ -69,7 +68,6 @@ const HomeSectionCarosel = ({ data, sectionName }) => {
             onClick={() => {
               slideNext();
             }}
-            className="z-50"
             sx={{
               position: "absolute",
               top: "8rem",

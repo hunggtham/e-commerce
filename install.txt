@@ -34,3 +34,6 @@ https://youtu.be/3jjxRz_egNY?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=5760
 add props for each catagory: <HomeSectionCarosel data={mens_kurta} sectionName={"Men's Clothes"} />
 
 Footer
+https://youtu.be/3jjxRz_egNY?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=6725
+
+https://youtu.be/3jjxRz_egNY?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=6785

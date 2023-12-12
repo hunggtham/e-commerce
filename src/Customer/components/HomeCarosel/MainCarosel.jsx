@@ -31,15 +31,18 @@ const MainCrosel = () => {
     />
   ));
   return (
-    <AliceCarousel
-      mouseTracking
-      items={items}
-      responsive={responsive}
-      controlsStrategy="alternate"
-      autoPlay
-      autoPlayInterval={2000}
-      infinite
-    />
+    <div className="z-10">
+      <AliceCarousel
+        mouseTracking
+        items={items}
+        responsive={responsive}
+        controlsStrategy="alternate"
+        autoPlay
+        autoPlayInterval={5000}
+        infinite
+        disableButtonsControls
+      />
+    </div>
   );
 };
 
