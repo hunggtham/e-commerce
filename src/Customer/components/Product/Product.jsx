@@ -54,8 +54,8 @@ export default function Product() {
             >
               <div className="fixed inset-0 bg-black bg-opacity-25" />
             </Transition.Child>
-
-            <div className="fixed inset-0 z-40 flex">
+            {/* padding top moblie filters */}
+            <div className="fixed inset-0 z-40 flex pt-20 mt-5">
               <Transition.Child
                 as={Fragment}
                 enter="transition ease-in-out duration-300 transform"
@@ -231,7 +231,9 @@ export default function Product() {
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
               {/* Filters */}
               <form className="hidden lg:block">
-                <h3 className="sr-only">Categories</h3>
+                <h2 className="text-lg opacity-50 font-bold">Filters</h2>
+                <br />
+                <h3 className="font-bold text-gray-900 mb-5">Categories</h3>
                 <ul
                   role="list"
                   className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
