@@ -18,6 +18,7 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
+import FilterListIcon from "@mui/icons-material/FilterList";
 export const sortOptions = [
   // { name: "Most Popular", href: "#", current: true },
   // { name: "Best Rating", href: "#", current: false },
@@ -231,7 +232,11 @@ export default function Product() {
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
               {/* Filters */}
               <form className="hidden lg:block">
-                <h2 className="text-lg opacity-50 font-bold">Filters</h2>
+                <div className="flex justify-between items-center">
+                  <h2 className="text-lg opacity-50 font-bold">Filters</h2>
+                  <FilterListIcon />
+                </div>
+
                 <br />
                 <h3 className="font-bold text-gray-900 mb-5">Categories</h3>
                 <ul
