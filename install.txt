@@ -49,3 +49,6 @@ and set route, routes of index.js and app.js
 end video 1
 
 start video 2
+Customer/components/ProductDetail
+ProductDetail.jsx: (copy and reduce from :https://tailwindui.com/components/ecommerce/components/product-overviews)
+https://youtu.be/XdAWAgKICo0?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=397
