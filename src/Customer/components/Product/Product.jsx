@@ -66,6 +66,7 @@ export default function Product() {
 
     if (filterValue.length > 0 && filterValue[0].split(",").includes(value)) {
       filterValue = filterValue[0].split(",").filter((item) => item !== value);
+
       if (filterValue.length === 0) {
         searchParams.delete(sectionId);
       }
@@ -74,9 +75,9 @@ export default function Product() {
     }
     if (filterValue.length > 0) {
       searchParams.set(sectionId, filterValue.join(","));
-      const query = searchParams.toString();
-      navigate({ search: `?${query}` });
     }
+    const query = searchParams.toString();
+    navigate({ search: `?${query}` });
   };
 
   const handleRadioFilter = (e, sectionId) => {
