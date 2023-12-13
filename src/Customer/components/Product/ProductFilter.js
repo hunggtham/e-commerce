@@ -75,4 +75,12 @@ export const priceDiscountFilter = [
       { value: "70", label: "70%", checked: false },
     ],
   },
+  {
+    id: "stock",
+    name: "Availability",
+    options: [
+      { value: "unvailiable", label: "Sold Out", checked: false },
+      { value: "vailiable", label: "Vailiable", checked: false },
+    ],
+  },
 ];
