@@ -2,10 +2,10 @@ import React from "react";
 import "./ProductCard.css";
 const ProductCard = () => {
   return (
-    <div className="productCard w-[15rem] m-3 transition-all cursor-pointer">
-      <div className="h-[20rem]">
+    <div className="productCard w-[13rem] m-3 transition-all cursor-pointer">
+      <div className="h-[15rem]">
         <img
-          className="h-full w-full object-cover object-left-top "
+          className="h-full w-full object-cover object-left-top"
           src="https://rukminim1.flixcart.com/image/612/612/xif0q/kurta/s/w/c/xl-vlmk-combzip02-vida-loca-original-imagkc4hhm4fxhjb.jpeg?q=70"
           alt="product"
         />
