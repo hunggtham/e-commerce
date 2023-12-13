@@ -10,22 +10,24 @@ import {
 } from "@heroicons/react/20/solid";
 import ProductCard from "./ProductCard";
 import { mens_kurta } from "../../../dummy-products-data/Men/men_kurta";
-import { filters, subCategories } from "./ProductFilter";
 import {
+  filters,
+  subCategories,
+  sortOptions,
+  priceDiscountFilter,
+  colorSizeFilter,
+} from "./ProductFilter";
+import {
+  Checkbox,
   FormControl,
   FormControlLabel,
+  FormGroup,
   FormLabel,
   Radio,
   RadioGroup,
 } from "@mui/material";
 import FilterListIcon from "@mui/icons-material/FilterList";
-export const sortOptions = [
-  // { name: "Most Popular", href: "#", current: true },
-  // { name: "Best Rating", href: "#", current: false },
-  // { name: "Newest", href: "#", current: false },
-  { name: "Price: Low to High", href: "#", current: false },
-  { name: "Price: High to Low", href: "#", current: false },
-];
+import { useLocation, useNavigate } from "react-router-dom";
 
 export function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -33,6 +35,56 @@ export function classNames(...classes) {
 
 export default function Product() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // use array to save  state of many checkbox
+  // const [checkedOptions, setCheckedOptions] = useState({});
+
+  // const handleChecked = (value, sectionId) => {
+  //   setCheckedOptions((prevCheckedOptions) => {
+  //     const updatedOptions = { ...prevCheckedOptions };
+  //     updatedOptions[sectionId] = updatedOptions[sectionId] || [];
+
+  //     if (updatedOptions[sectionId].includes(value)) {
+  //       // If the value is already in the array, remove it
+  //       updatedOptions[sectionId] = updatedOptions[sectionId].filter(
+  //         (item) => item !== value
+  //       );
+  //     } else {
+  //       // If the value is not in the array, add it
+  //       updatedOptions[sectionId].push(value);
+  //     }
+
+  //     return updatedOptions;
+  //   });
+  // };
+
+  const handleCheckboxFilter = (value, sectionId) => {
+    const searchParams = new URLSearchParams(location.search);
+    let filterValue = searchParams.getAll(sectionId);
+
+    if (filterValue.length > 0 && filterValue[0].split(",").includes(value)) {
+      filterValue = filterValue[0].split(",").filter((item) => item !== value);
+      if (filterValue.length === 0) {
+        searchParams.delete(sectionId);
+      }
+    } else {
+      filterValue.push(value);
+    }
+    if (filterValue.length > 0) {
+      searchParams.set(sectionId, filterValue.join(","));
+      const query = searchParams.toString();
+      navigate({ search: `?${query}` });
+    }
+  };
+
+  const handleRadioFilter = (e, sectionId) => {
+    const searchParams = new URLSearchParams(location.search);
+    searchParams.set(sectionId, e.target.value);
+    const query = searchParams.toString();
+    navigate({ search: `?${query}` });
+  };
 
   return (
     <div className="bg-white">
@@ -97,7 +149,66 @@ export default function Product() {
                       ))}
                     </ul>
 
-                    {filters.map((section) => (
+                    {/* checkbox for size and color */}
+                    {colorSizeFilter.map((section) => (
+                      <Disclosure
+                        as="div"
+                        key={section.id}
+                        className="border-b border-gray-200 px-4 py-6"
+                      >
+                        {({ open }) => (
+                          <>
+                            <h3 className="-mx-2 -my-3 flow-root">
+                              <Disclosure.Button className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
+                                <span className="font-bold text-gray-900">
+                                  {section.name}
+                                </span>
+                                <span className="ml-6 flex items-center">
+                                  {open ? (
+                                    <MinusIcon
+                                      className="h-5 w-5"
+                                      aria-hidden="true"
+                                    />
+                                  ) : (
+                                    <PlusIcon
+                                      className="h-5 w-5"
+                                      aria-hidden="true"
+                                    />
+                                  )}
+                                </span>
+                              </Disclosure.Button>
+                            </h3>
+                            <Disclosure.Panel className="pt-10">
+                              <FormControl>
+                                <FormGroup>
+                                  {section.options.map((option, optionIdx) => (
+                                    <FormControlLabel
+                                      // className="font-medium text-gray-900"
+                                      key={optionIdx}
+                                      sx={{ fontBold: "500" }}
+                                      control={
+                                        <Checkbox
+                                          onChange={() => {
+                                            handleCheckboxFilter(
+                                              option.value,
+                                              section.id
+                                            );
+                                          }}
+                                          name={option.value}
+                                        />
+                                      }
+                                      label={option.label}
+                                    />
+                                  ))}
+                                </FormGroup>
+                              </FormControl>
+                            </Disclosure.Panel>
+                          </>
+                        )}
+                      </Disclosure>
+                    ))}
+                    {/* radio for price and discount */}
+                    {priceDiscountFilter.map((section) => (
                       <Disclosure
                         as="div"
                         key={section.id}
@@ -107,7 +218,7 @@ export default function Product() {
                           <>
                             <h3 className="-mx-2 -my-3 flow-root">
                               <Disclosure.Button className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
-                                <span className="font-medium text-gray-900">
+                                <span className="font-bold text-gray-900">
                                   {section.name}
                                 </span>
                                 <span className="ml-6 flex items-center">
@@ -134,6 +245,8 @@ export default function Product() {
                                 >
                                   {section.options.map((option, optionIdx) => (
                                     <FormControlLabel
+                                      key={optionIdx}
+                                      onChange={handleRadioFilter}
                                       value={option.value}
                                       control={<Radio />}
                                       label={option.label}
@@ -249,8 +362,66 @@ export default function Product() {
                     </li>
                   ))}
                 </ul>
-
-                {filters.map((section) => (
+                {/* checkbox for size and color */}
+                {colorSizeFilter.map((section) => (
+                  <Disclosure
+                    as="div"
+                    key={section.id}
+                    className="border-b border-gray-200 py-6"
+                  >
+                    {({ open }) => (
+                      <>
+                        <h3 className="-mx-2 -my-3 flow-root">
+                          <Disclosure.Button className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
+                            <span className="font-bold text-gray-900">
+                              {section.name}
+                            </span>
+                            <span className="ml-6 flex items-center">
+                              {open ? (
+                                <MinusIcon
+                                  className="h-5 w-5"
+                                  aria-hidden="true"
+                                />
+                              ) : (
+                                <PlusIcon
+                                  className="h-5 w-5"
+                                  aria-hidden="true"
+                                />
+                              )}
+                            </span>
+                          </Disclosure.Button>
+                        </h3>
+                        <Disclosure.Panel className="pt-10">
+                          <FormControl>
+                            <FormGroup>
+                              {section.options.map((option, optionIdx) => (
+                                <FormControlLabel
+                                  // className="font-medium text-gray-900"
+                                  key={optionIdx}
+                                  sx={{ fontBold: "500" }}
+                                  control={
+                                    <Checkbox
+                                      onChange={() => {
+                                        handleCheckboxFilter(
+                                          option.value,
+                                          section.id
+                                        );
+                                      }}
+                                      name={option.value}
+                                    />
+                                  }
+                                  label={option.label}
+                                />
+                              ))}
+                            </FormGroup>
+                          </FormControl>
+                        </Disclosure.Panel>
+                      </>
+                    )}
+                  </Disclosure>
+                ))}
+                {/* radio for price and discount */}
+                {priceDiscountFilter.map((section) => (
                   <Disclosure
                     as="div"
                     key={section.id}
@@ -310,6 +481,12 @@ export default function Product() {
                             >
                               {section.options.map((option, optionIdx) => (
                                 <FormControlLabel
+                                  key={optionIdx}
+                                  onChange={(e) => {
+                                    // console.log("option.value", option.value);
+                                    // console.log("section.id", section.id);
+                                    handleRadioFilter(e, section.id);
+                                  }}
                                   value={option.value}
                                   control={<Radio />}
                                   label={option.label}
@@ -327,8 +504,8 @@ export default function Product() {
               {/* Product grid */}
               <div className="lg:!col-span-4 w-full">
                 <div className="flex flex-wrap justify-center bg-white py-5">
-                  {mens_kurta.map((item) => (
-                    <ProductCard product={item} />
+                  {mens_kurta.map((item, index) => (
+                    <ProductCard product={item} key={index} />
                   ))}
                 </div>
               </div>

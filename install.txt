@@ -43,3 +43,5 @@ https://youtu.be/3jjxRz_egNY?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=7542
 
 Customer/compement Product/Product.jsx
 https://youtu.be/3jjxRz_egNY?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=8623
+
+implement handleFilter function in Product(install react-router-dom, useNavigate, useLocation): setting in index.js(BrowserProvided)

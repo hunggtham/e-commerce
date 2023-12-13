@@ -406,7 +406,7 @@ export default function Example() {
                         className="text-white"
                         // onClick ={handleUserClick}
                         aria-controls={open ? "basic-menu" : undefined}
-                        aria-aria-haspopup="true"
+                        // aria-aria-haspopup="true"
                         sx={{
                           bgcolor: deepPurple[500],
                           color: "white",

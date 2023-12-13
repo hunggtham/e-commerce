@@ -1,3 +1,10 @@
+export const sortOptions = [
+  // { name: "Most Popular", href: "#", current: true },
+  // { name: "Best Rating", href: "#", current: false },
+  // { name: "Newest", href: "#", current: false },
+  { name: "Price: Low to High", href: "#", current: false },
+  { name: "Price: High to Low", href: "#", current: false },
+];
 export const subCategories = [
   { name: "Totes", href: "#" },
   { name: "Backpacks", href: "#" },
@@ -5,7 +12,7 @@ export const subCategories = [
   { name: "Hip Bags", href: "#" },
   { name: "Laptop Sleeves", href: "#" },
 ];
-export const filters = [
+export const colorSizeFilter = [
   {
     id: "color",
     name: "Color",
@@ -18,6 +25,21 @@ export const filters = [
       { value: "purple", label: "Purple", checked: false },
     ],
   },
+  {
+    id: "size",
+    name: "Size",
+    options: [
+      { value: "S", label: "S", checked: false },
+      { value: "M", label: "M", checked: false },
+      { value: "L", label: "L", checked: false },
+      // { value: "18l", label: "18L", checked: false },
+      // { value: "20l", label: "20L", checked: false },
+      // { value: "40l", label: "40L", checked: true },
+    ],
+  },
+];
+
+export const priceDiscountFilter = [
   //   {
   //     id: "category",
   //     name: "Category",
@@ -51,18 +73,6 @@ export const filters = [
       { value: "50", label: "50%", checked: false },
       { value: "60", label: "60%", checked: false },
       { value: "70", label: "70%", checked: false },
-    ],
-  },
-  {
-    id: "size",
-    name: "Size",
-    options: [
-      { value: "S", label: "S", checked: false },
-      { value: "M", label: "M", checked: false },
-      { value: "L", label: "L", checked: false },
-      // { value: "18l", label: "18L", checked: false },
-      // { value: "20l", label: "20L", checked: false },
-      // { value: "40l", label: "40L", checked: true },
     ],
   },
 ];
