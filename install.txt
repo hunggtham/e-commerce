@@ -61,3 +61,6 @@ Customer/components/Cart
 CartItem.jsx
 Cart.jsx
 https://youtu.be/XdAWAgKICo0?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=4265
+https://youtu.be/XdAWAgKICo0?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=5409
+
+#Checkout/Payment
