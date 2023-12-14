@@ -5,15 +5,17 @@ import Navigation from "./Customer/components/Navigation/Navigation";
 import Product from "./Customer/components/Product/Product";
 import HomePage from "./Customer/components/pages/HomePage/HomePage";
 import ProductDetail from "./Customer/components/ProductDetail/ProductDetail";
+import Cart from "./Customer/components/Cart/Cart";
 function App() {
   return (
     <div className="App">
       <Navigation />
       {/* <HomePage /> */}
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/products" element={<Product />} />
+        {/* <Route path="/" element={<HomePage />} /> */}
+        {/* <Route path="/products" element={<Product />} /> */}
         <Route path="/product-detail" element={<ProductDetail />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
       <Footer />
     </div>

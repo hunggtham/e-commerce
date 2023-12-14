@@ -1,27 +1,17 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    theme: {
-      extend: {
-        gridTemplateRows: {
-          '[auto,auto,1fr]': 'auto auto 1fr',
-        },
-      },
-    },
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
 import { useState } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { RadioGroup } from "@headlessui/react";
+import {
+  Box,
+  Button,
+  Grid,
+  LinearProgress,
+  Rating,
+  Typography,
+} from "@mui/material";
+import ProductReviewCard from "./ProductReviewCard";
+import { mens_kurta } from "../../../dummy-products-data/Men/men_kurta";
+import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -55,8 +45,8 @@ const product = {
     { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
   ],
   sizes: [
-    { name: "XXS", inStock: false },
-    { name: "XS", inStock: true },
+    // { name: "XXS", inStock: false },
+    // { name: "XS", inStock: true },
     { name: "S", inStock: true },
     { name: "M", inStock: true },
     { name: "L", inStock: true },
@@ -86,7 +76,7 @@ export default function ProductDetail() {
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white lg:px-20">
       <div className="pt-6">
         <nav aria-label="Breadcrumb">
           <ol
@@ -140,75 +130,62 @@ export default function ProductDetail() {
             </div>
             {/* <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8"> */}
             <div className="flex flex-wrap space-x-5 justify-center">
-              <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-                <img
-                  src={product.images[1].src}
-                  alt={product.images[1].alt}
-                  className="h-full w-full object-cover object-center"
-                />
-              </div>
-              <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-                <img
-                  src={product.images[2].src}
-                  alt={product.images[2].alt}
-                  className="h-full w-full object-cover object-center"
-                />
-              </div>
-            </div>
-            <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
-              <img
-                src={product.images[3].src}
-                alt={product.images[3].alt}
-                className="h-full w-full object-cover object-center"
-              />
+              {/* <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg"> */}
+              {product.images.map((image) => (
+                //lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg
+                <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg max-w-[5rem] max-h-[5rem] mt-4 ">
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="h-full w-full object-cover object-center"
+                  />
+                </div>
+              ))}
             </div>
           </div>
           {/* Product info */}
-          <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
-            <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-              <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+          {/* <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16"> */}
+          <div className="lg:colspan-1 max-auto max-w-2xl px-4 pb-16 sm:px-6 lg:max-w-7xl lg:px-8 lg:pb-24">
+            {/* <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8"> */}
+            <div className="lg:col-span-2">
+              {/* <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl"> */}
+              <h1 className="text-lg lg:text-xl font-semibold text-gray-900">
                 {product.name}
               </h1>
+              <h2 className="text-lg lg:text-xl text-gray-900 opacity-60 pt-1">
+                Lorem ipsum dolor sit amet.
+              </h2>
             </div>
 
             {/* Options */}
             <div className="mt-4 lg:row-span-3 lg:mt-0">
               <h2 className="sr-only">Product information</h2>
-              <p className="text-3xl tracking-tight text-gray-900">
+              {/* <p className="text-3xl tracking-tight text-gray-900">
                 {product.price}
-              </p>
+              </p> */}
 
+              <div className="flex space-x-5 items-center text-lg lg:text-xl text-gray-900 mt-6">
+                <p className="font-semibold">{product.price}</p>
+                <p className="opacity-50 line-through">150%</p>
+                <p className="text-green-600 font-semibold">5% off</p>
+              </div>
               {/* Reviews */}
-              <div className="mt-6">
-                <h3 className="sr-only">Reviews</h3>
-                <div className="flex items-center">
-                  <div className="flex items-center">
-                    {[0, 1, 2, 3, 4].map((rating) => (
-                      <StarIcon
-                        key={rating}
-                        className={classNames(
-                          reviews.average > rating
-                            ? "text-gray-900"
-                            : "text-gray-200",
-                          "h-5 w-5 flex-shrink-0"
-                        )}
-                        aria-hidden="true"
-                      />
-                    ))}
-                  </div>
-                  <p className="sr-only">{reviews.average} out of 5 stars</p>
-                  <a
-                    href={reviews.href}
-                    className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500"
-                  >
-                    {reviews.totalCount} reviews
-                  </a>
-                </div>
+              <div className="mt-6 flex items-center space-x-4">
+                <Rating
+                  name="read-only half-rating"
+                  value={2.7}
+                  precision={0.1}
+                  readOnly
+                />
+                <p className="text-sm opacity-50">56565 Ratings</p>
+                <p className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                  3806 Reviews
+                </p>
               </div>
 
               <form className="mt-10">
                 {/* Colors */}
-                <div>
+                {/* <div>
                   <h3 className="text-sm font-medium text-gray-900">Color</h3>
 
                   <RadioGroup
@@ -247,18 +224,18 @@ export default function ProductDetail() {
                       ))}
                     </div>
                   </RadioGroup>
-                </div>
+                </div> */}
 
                 {/* Sizes */}
                 <div className="mt-10">
                   <div className="flex items-center justify-between">
                     <h3 className="text-sm font-medium text-gray-900">Size</h3>
-                    <a
+                    {/* <a
                       href="#"
                       className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
                     >
                       Size guide
-                    </a>
+                    </a> */}
                   </div>
 
                   <RadioGroup
@@ -330,12 +307,25 @@ export default function ProductDetail() {
                   </RadioGroup>
                 </div>
 
-                <button
+                {/* <button
                   type="submit"
                   className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 >
                   Add to bag
-                </button>
+                </button> */}
+                <Button
+                  variant="contained"
+                  sx={{
+                    px: "5rem",
+                    py: "1rem",
+                    mt: "2rem",
+                    height: "3rem",
+                    fontSize: "0.8rem",
+                    display: "flex",
+                  }}
+                >
+                  Add to Cart
+                </Button>
               </form>
             </div>
 
@@ -375,6 +365,136 @@ export default function ProductDetail() {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+        {/* Rating & Reviews */}
+        <section className="lg:px-8 ">
+          <h2 className="font-semibold text-lg pb-4">Recent Review & Rating</h2>
+          <div className="border p-5">
+            <Grid container spacing={7}>
+              <Grid item xs={6}>
+                <div className="space-y-5">
+                  {[1, 1, 1.1].map((item) => (
+                    <ProductReviewCard />
+                  ))}
+                </div>
+              </Grid>
+              <Grid item xs={6}>
+                <h2 className="text-xl font-semibold pb-1 ">Product Ratings</h2>
+
+                <div className="flex flex-wrap items-center space-x-3">
+                  <Rating value={4.5} precition={0.5} readOnly />
+                  <p className="opacity-60">xxxx Ratings</p>
+                </div>
+                <Box className="mt-5 space-y-3">
+                  {/* 1 */}
+                  <Grid container alignItems="center" gap={3}>
+                    <Grid item xs={3}>
+                      <p>Excelent(5)</p>
+                    </Grid>
+                    <Grid item xs={7}>
+                      <LinearProgress
+                        variant="determinate"
+                        value={80}
+                        color="success"
+                        sx={{
+                          bgcolor: "#d0d0d0",
+                          borderRadius: 4,
+                          height: 7,
+                          "& .MuiLinearProgress-bar": {
+                            transition: "none",
+                          },
+                        }}
+                      />
+                    </Grid>
+                  </Grid>
+                  {/* 2 */}
+                  <Grid container alignItems="center" gap={3}>
+                    <Grid item xs={3}>
+                      <p>Good(4)</p>
+                    </Grid>
+                    <Grid item xs={7}>
+                      <LinearProgress
+                        variant="determinate"
+                        value={90}
+                        color="warning"
+                        sx={{ bgcolor: "#d0d0d0", borderRadius: 4, height: 7 }}
+                      />
+                    </Grid>
+                  </Grid>
+                  {/* 3 */}
+                  <Grid container alignItems="center" gap={3}>
+                    <Grid item xs={3}>
+                      <p>Average(3)</p>
+                    </Grid>
+                    <Grid item xs={7}>
+                      <LinearProgress
+                        variant="determinate"
+                        value={20}
+                        sx={{
+                          bgcolor: "#d0d0d0",
+                          borderRadius: 4,
+                          height: 7,
+                          "& .MuiLinearProgress-bar": {
+                            transition: "none",
+                          },
+                        }}
+                      />
+                    </Grid>
+                  </Grid>
+                  {/* 4 */}
+                  <Grid container alignItems="center" gap={3}>
+                    <Grid item xs={3}>
+                      <p>Bad(2)</p>
+                    </Grid>
+                    <Grid item xs={7}>
+                      <LinearProgress
+                        variant="determinate"
+                        value={10}
+                        sx={{
+                          bgcolor: "#d0d0d0",
+                          borderRadius: 4,
+                          height: 7,
+                          "& .MuiLinearProgress-bar": {
+                            transition: "none",
+                          },
+                        }}
+                      />
+                    </Grid>
+                  </Grid>
+                  {/* 5 */}
+                  <Grid container alignItems="center" gap={3}>
+                    <Grid item xs={3}>
+                      <p>Very Bad(1)</p>
+                    </Grid>
+                    <Grid item xs={7}>
+                      <LinearProgress
+                        variant="determinate"
+                        value={5}
+                        sx={{
+                          bgcolor: "#d0d0d0",
+                          borderRadius: 4,
+                          height: 7,
+                          "& .MuiLinearProgress-bar": {
+                            transition: "none",
+                          },
+                        }}
+                      />
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Grid>
+            </Grid>
+          </div>
+        </section>
+
+        {/* similer Product  */}
+        <section className="pt-10">
+          <h2 className="py-5 text-xl font-bold">Similer Product</h2>
+          <div className="flex flex-wrap space-y-5">
+            {mens_kurta.slice(0, 12).map((item) => (
+              <HomeSectionCard product={item} />
+            ))}
           </div>
         </section>
       </div>
