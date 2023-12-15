@@ -64,3 +64,8 @@ https://youtu.be/XdAWAgKICo0?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=4265
 https://youtu.be/XdAWAgKICo0?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=5409
 
 #Checkout/Payment
+Customer/components/AddressCard: AddressCard
+-customize stepper of MUI:https://mui.com/material-ui/react-stepper/
+Customer/components/Payment: Payment.jsx, OrderSummary.jsx, DeliveryFrom.jsx
+https://youtu.be/XdAWAgKICo0?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR
+https://youtu.be/XdAWAgKICo0?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=7436
