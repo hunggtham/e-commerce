@@ -68,4 +68,5 @@ Customer/components/AddressCard: AddressCard
 -customize stepper of MUI:https://mui.com/material-ui/react-stepper/
 Customer/components/Payment: Payment.jsx, OrderSummary.jsx, DeliveryFrom.jsx
 https://youtu.be/XdAWAgKICo0?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR
-https://youtu.be/XdAWAgKICo0?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=7436
+
+done, done video 2

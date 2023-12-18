@@ -98,14 +98,14 @@ export default function Payment() {
             {/* <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography> */}
 
             <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-              {/* <Button
+              <Button
                 color="inherit"
                 disabled={activeStep === 0}
                 onClick={handleBack}
                 sx={{ mr: 1 }}
               >
                 Back
-              </Button> */}
+              </Button>
               {/* <Box sx={{ flex: '1 1 auto' }} />
             {isStepOptional(activeStep) && (
               <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
@@ -117,7 +117,7 @@ export default function Payment() {
                 {activeStep === steps.length - 1 ? "Finish" : "Next"}
               </Button> */}
             </Box>
-            <Box>
+            <Box mt={5}>
               {/* {stepSearch === 2 ? (
                 <DeliveryForm />
               ) : stepSearch !== 1 ? (

@@ -6,7 +6,16 @@ const DeliveryForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    console.log("data", data);
+    const address = {
+      firstName: data.get("firstName"),
+      lastName: data.get("lastName"),
+      streetAddress: data.get("streetAddress"),
+      city: data.get("city"),
+      state: data.get("state"),
+      zipCode: data.get("zipCode"),
+      phoneNumber: data.get("phoneNumber"),
+    };
+    console.log("data", address);
   };
   return (
     <div>
@@ -48,8 +57,8 @@ const DeliveryForm = () => {
                 <Grid item xs={12}>
                   <TextField
                     required
-                    id="address"
-                    name="adress"
+                    id="streetAddress"
+                    name="streetAddress"
                     label="Address"
                     fullWidth
                     // autoComplete="given-name"
@@ -78,8 +87,8 @@ const DeliveryForm = () => {
                 <Grid item xs={12} sm={6}>
                   <TextField
                     required
-                    id="postalCode"
-                    name="postalCode"
+                    id="zipCode"
+                    name="zipCode"
                     label="Zip / Postal Code"
                     fullWidth
                     autoComplete="shipping postal-code"
