@@ -1,8 +1,14 @@
 import React from "react";
 import CartItem from "./CartItem";
 import { Box, Button, Divider } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
+  const navigate = useNavigate();
+
+  const handleBuy = () => {
+    navigate("/payment?step=3");
+  };
   return (
     <div>
       <div className="lg:grid grid-cols-3 lg:px-16 relative">
@@ -41,6 +47,7 @@ const Cart = () => {
               </div>
             </div>
             <Button
+              onClick={handleBuy}
               color="primary"
               variant="contained"
               sx={{ px: "3rem", py: ".5rem", mt: "1rem", width: "100%" }}

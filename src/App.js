@@ -10,21 +10,13 @@ import Payment from "./Customer/components/Payment/Payment";
 import Order from "./Customer/components/Order/Order";
 import OrderDetail from "./Customer/components/Order/OrderDetail";
 import OrderTracker from "./Customer/components/Order/OrderTracker";
+import CustomerRoutes from "./Routers/CustomerRoutes";
 function App() {
   return (
     <div className="App">
-      <Navigation />
-      {/* <HomePage /> */}
       <Routes>
-        {/* <Route path="/" element={<HomePage />} /> */}
-        {/* <Route path="/products" element={<Product />} /> */}
-        <Route path="/product-detail" element={<ProductDetail />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/payment" element={<Payment />} />
-        <Route path="/order" element={<Order />} />
-        <Route path="/order-detail" element={<OrderDetail />} />
+        <Route path="/*" element={<CustomerRoutes />}></Route>
       </Routes>
-      <Footer />
     </div>
   );
 }

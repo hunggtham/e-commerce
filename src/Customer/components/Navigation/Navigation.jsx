@@ -1,17 +1,3 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
 import { Fragment, useState } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import {
@@ -20,38 +6,51 @@ import {
   ShoppingBagIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import { navigation } from "./navigation_copy";
-import { Avatar } from "@mui/material";
+
+import { Avatar, Menu, MenuItem } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
+import { useNavigate } from "react-router-dom";
+import { navigation } from "./navigationCatagory";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example() {
+const Navigation = () => {
   const [open, setOpen] = useState(false);
 
-  // setUI for login or not
+  const navigate = useNavigate();
+
   const [isLogin] = useState(true);
-  /* 
-  const [openAuthModal,setOpenAuthModal] = useState(false);
-  const [anchorE1, setAnchorE1] = useState(null);
-  const openUserMenu = Boolean(anchorE1);
-  const jwt = localStorage.getItem('jwt);
-  const handleUserLClick=(event)=>{
-    setAnchorE1(event.currentTarget);
-  }
-  constCloseUserMenu(event)=>{
-    setAnchorE1(null)
-  }
-  const handleOpen()=>{
-    setOpenAuthModal(true);
-  }
-  const handleCategoryClick =(category, section, item, close)=>{
-      navigate(`/${category.id}/${section.id}/${item.id}`);
-      close()
-  }
-*/
+
+  // const [openAuthModal, setOpenAuthModal] = useState(false);
+  // const handleOpen = () => {
+  //   setOpenAuthModal(true);
+  // };
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const openUserMenu = Boolean(anchorEl);
+
+  // const jwt = localStorage.getItem('jwt);
+
+  const handleUserClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    console.log("handleMenuClose");
+    setAnchorEl(null);
+  };
+
+  const handleCategoryClick = (category, section, item, close) => {
+    navigate(`/${category.id}/${section.id}/${item.id}`);
+    close();
+  };
+
+  const handleOrderMenu = () => {
+    handleCloseUserMenu();
+    navigate("/account/order");
+  };
   return (
     <div className="bg-white">
       {/* Mobile menu */}
@@ -163,12 +162,19 @@ export default function Example() {
                             >
                               {section.items.map((item) => (
                                 <li key={item.name} className="flow-root">
-                                  <a
-                                    href={item.href}
-                                    className="-m-2 block p-2 text-gray-500"
+                                  <p
+                                    onClick={() => {
+                                      handleCategoryClick(
+                                        category,
+                                        section,
+                                        item
+                                        // close
+                                      );
+                                    }}
+                                    className="hover:text-gray-800"
                                   >
                                     {item.name}
-                                  </a>
+                                  </p>
                                 </li>
                               ))}
                             </ul>
@@ -363,12 +369,19 @@ export default function Example() {
                                                 key={item.name}
                                                 className="flex"
                                               >
-                                                <a
-                                                  href={item.href}
+                                                <p
+                                                  onClick={() => {
+                                                    handleCategoryClick(
+                                                      category,
+                                                      section,
+                                                      item
+                                                      // close
+                                                    );
+                                                  }}
                                                   className="hover:text-gray-800"
                                                 >
                                                   {item.name}
-                                                </a>
+                                                </p>
                                               </li>
                                             ))}
                                           </ul>
@@ -403,16 +416,38 @@ export default function Example() {
                   {isLogin ? (
                     <div>
                       <Avatar
+                        id="avatar-button"
                         className="text-white"
-                        // onClick ={handleUserClick}
-                        aria-controls={open ? "basic-menu" : undefined}
-                        // aria-aria-haspopup="true"
+                        onClick={handleUserClick}
+                        // onClose={handleCloseUserMenu}
+                        aria-controls={
+                          openUserMenu ? "account-menu" : undefined
+                        }
+                        aria-haspopup="true"
+                        aria-expanded={openUserMenu ? "true" : undefined}
                         sx={{
-                          bgcolor: deepPurple[500],
+                          // bgcolor: deepPurple[500],
                           color: "white",
                           cursor: "pointer",
                         }}
                       ></Avatar>
+                      <Menu
+                        id="account-menu"
+                        anchorEl={anchorEl}
+                        open={openUserMenu}
+                        onClose={handleCloseUserMenu}
+                        MenuListProps={{
+                          "aria-labelledby": "avatar-button",
+                        }}
+                      >
+                        <MenuItem onClick={handleCloseUserMenu}>
+                          Profile
+                        </MenuItem>
+                        <MenuItem onClick={handleOrderMenu}>Order</MenuItem>
+                        <MenuItem onClick={handleCloseUserMenu}>
+                          Logout
+                        </MenuItem>
+                      </Menu>
                     </div>
                   ) : (
                     <div>
@@ -483,4 +518,5 @@ export default function Example() {
       </header>
     </div>
   );
-}
+};
+export default Navigation;
