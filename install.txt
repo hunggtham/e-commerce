@@ -74,3 +74,5 @@ done, done video 2
 # Customer\components\Order: Order, OrderCard.jsx
 https://youtu.be/gzGzTza3IuQ?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=1721
 done Order:(Order + OrderCard), start OrderDetail
+https://youtu.be/gzGzTza3IuQ?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=3015
+done Order:OrderDetail, start implementing Routes
