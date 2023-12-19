@@ -44,7 +44,7 @@ const Navigation = () => {
 
   const handleCategoryClick = (category, section, item, close) => {
     navigate(`/${category.id}/${section.id}/${item.id}`);
-    close();
+    // close();
   };
 
   const handleOrderMenu = () => {
@@ -269,7 +269,7 @@ const Navigation = () => {
 
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
-                <a href="#">
+                <a href="/">
                   <span className="sr-only">Your Company</span>
                   <img
                     className="h-8 w-auto"
