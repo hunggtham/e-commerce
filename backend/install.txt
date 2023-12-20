@@ -1,0 +1,10 @@
+#1: init project 
+
+- create by start.spring.io
+- setting in resources/application.properties: port + mysql
+
+https://spring.io/guides/gs/accessing-data-mysql/
+install mysql, open mysql commandline: creat database xxx, setting in url, username, password application.properties
+change <scope>provided</scope> of "mysql-connector-j" in pom.xml
+
+run in browser: localhost:5454
