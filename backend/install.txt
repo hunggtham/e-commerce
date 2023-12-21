@@ -1,0 +1,14 @@
+start video 4
+https://youtu.be/-Zn_QXN0qtQ?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR
+
+#1 init project
+
+1.1start spring boot project with start.srping.io or spring initialliz extension
+1.2 setting application.property: server.port
+    mysql: https://spring.io/guides/gs/accessing-data-mysql/
+
+1.3 config: backend/config: AppConfig.java, JwtContanst.java, JwtValidation.java, jwtProvider.java
+	-add jjwt-jackson,jjwt-impl,jjwt-api dependency
+#2  createEntity
+add User, Category, Address, PaymentInfomation, Product, Rating, Review, Size Model
+https://youtu.be/-Zn_QXN0qtQ?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=4607
