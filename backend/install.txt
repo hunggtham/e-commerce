@@ -12,3 +12,5 @@ https://youtu.be/-Zn_QXN0qtQ?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR
 #2  createEntity
 add User, Category, Address, PaymentInfomation, Product, Rating, Review, Size Model
 https://youtu.be/-Zn_QXN0qtQ?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=4607
+
+https://youtu.be/-Zn_QXN0qtQ?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=5629
