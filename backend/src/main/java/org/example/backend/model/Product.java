@@ -34,16 +34,16 @@ public class Product {
 	
 	
 	@Column(name = "price")
-	private String price;
+	private int price;
 	
 	@Column(name = "discountedPrice")
-	private String discountedPrice;
+	private int discountedPrice;
 	
-	@Column(name = "discountPersent")
-	private String discountPersent;
+	@Column(name = "discountPercent")
+	private int discountPercent;
 	
 	@Column(name = "quantity")
-	private String quantity;
+	private int quantity;
 	
 	@Column(name = "brand")
 	private String brand;
@@ -98,35 +98,37 @@ public class Product {
 		this.discription = discription;
 	}
 
-	public String getPrice() {
+
+
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 
-	public String getDiscountedPrice() {
+	public int getDiscountedPrice() {
 		return discountedPrice;
 	}
 
-	public void setDiscountedPrice(String discountedPrice) {
+	public void setDiscountedPrice(int discountedPrice) {
 		this.discountedPrice = discountedPrice;
 	}
 
-	public String getDiscountPersent() {
-		return discountPersent;
+	public int getDiscountPercent(int i) {
+		return discountPercent;
 	}
 
-	public void setDiscountPersent(String discountPersent) {
-		this.discountPersent = discountPersent;
+	public void setDiscountPercent(int discountPercent) {
+		this.discountPercent = discountPercent;
 	}
 
-	public String getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(String quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
@@ -203,11 +205,10 @@ public class Product {
 	}
 	
 	public Product() {
-		// TODO Auto-generated constructor stub
 	}
 
-	public Product(Long id, String title, String discription, String price, String discountedPrice,
-			String discountPersent, String quantity, String brand, String color, Set<Size> sizes, String imageUrl,
+	public Product(Long id, String title, String discription, int price, int discountedPrice,
+			int discountPercent, int quantity, String brand, String color, Set<Size> sizes, String imageUrl,
 			List<Rating> rating, List<Review> review, int numRatings, Category category, LocalDateTime createAt) {
 		super();
 		Id = id;
@@ -215,7 +216,7 @@ public class Product {
 		this.discription = discription;
 		this.price = price;
 		this.discountedPrice = discountedPrice;
-		this.discountPersent = discountPersent;
+		this.discountPercent = discountPercent;
 		this.quantity = quantity;
 		this.brand = brand;
 		this.color = color;

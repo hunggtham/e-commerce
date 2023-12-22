@@ -19,12 +19,18 @@ https://youtu.be/-Zn_QXN0qtQ?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=5629
     -add Request, response to controll AuthController(handle signup and signin)
     -can signup by postmand with 
     post method: http://localhost:5454/auth/signup
-    {
-    "firstName": "test3",
+    {"firstName": "test3",
     "lastName": "test3",
     "email": "test3@gmail.com",
     "password": "test@123",
-    "phoneNumber":"01012345678"
-
-}
+    "phoneNumber":"01012345678"}
+	- and sign in {
+    "email": "test3@gmail.com",
+    "password": "test@123"
+	}
+tham khảo thêm: https://loda.me/articles/ss-huong-dan-spring-security-jpa-hibernate
+https://loda.me/articles/ss-huong-dan-spring-security-jwt-json-web-token-hibernate
 end video 4
+
+
+https://youtu.be/Oe_F0oRdJ2k?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=4748

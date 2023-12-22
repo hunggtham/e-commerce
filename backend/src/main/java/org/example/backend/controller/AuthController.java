@@ -6,7 +6,7 @@ import org.example.backend.model.User;
 import org.example.backend.repository.UserRepository;
 import org.example.backend.request.LoginRequest;
 import org.example.backend.response.AuthResponse;
-import org.example.backend.service.CustomeUserServiceImplementation;
+import org.example.backend.service.CustomeUserServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -27,9 +27,9 @@ public class AuthController {
 	private UserRepository userRepository;
 	private JwtProvider jwtProvider;
 	private PasswordEncoder passwordEncoder;
-	private CustomeUserServiceImplementation customeUserService;
+	private CustomeUserServiceImpl customeUserService;
 	
-	public AuthController(UserRepository userRepository,CustomeUserServiceImplementation customeUserService,PasswordEncoder passwordEncoder,JwtProvider jwtProvider) {
+	public AuthController(UserRepository userRepository,CustomeUserServiceImpl customeUserService,PasswordEncoder passwordEncoder,JwtProvider jwtProvider) {
 		this.userRepository = userRepository;
 		this.customeUserService = customeUserService;
 		this.passwordEncoder = passwordEncoder;
