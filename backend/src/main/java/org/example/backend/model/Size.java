@@ -1,8 +1,7 @@
-package com.example.backend.model;
+package org.example.backend.model;
 
 import jakarta.persistence.Entity;
 
-@Entity
 public class Size {
 	
 	private String name;

@@ -1,4 +1,4 @@
-package com.example.backend.exception;
+package org.example.backend.exception;
 
 public class UserException extends Exception {
 

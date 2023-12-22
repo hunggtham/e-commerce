@@ -1,8 +1,8 @@
-package com.example.backend.service;
+package org.example.backend.service;
 
 
-import com.example.backend.exception.UserException;
-import com.example.backend.model.User;
+import org.example.backend.exception.UserException;
+import org.example.backend.model.User;
 
 public interface UserService {
 

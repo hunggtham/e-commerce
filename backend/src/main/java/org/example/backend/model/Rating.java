@@ -1,4 +1,4 @@
-package com.example.backend.model;
+package org.example.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

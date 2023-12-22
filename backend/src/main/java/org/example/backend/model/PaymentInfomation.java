@@ -1,11 +1,10 @@
-package com.example.backend.model;
+package org.example.backend.model;
 
 import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
-@Entity
 public class PaymentInfomation {
 
 	@Column(name = "cardHolderName")
