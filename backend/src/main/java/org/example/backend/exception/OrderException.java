@@ -1,13 +1,10 @@
 package org.example.backend.exception;
 
-public class UserException extends Exception {
+public class OrderException extends Exception {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public UserException(String message) {
-		super(message);
-	}
 }
