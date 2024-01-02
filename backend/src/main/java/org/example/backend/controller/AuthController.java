@@ -6,6 +6,7 @@ import org.example.backend.model.User;
 import org.example.backend.repository.UserRepository;
 import org.example.backend.request.LoginRequest;
 import org.example.backend.response.AuthResponse;
+import org.example.backend.service.CartService;
 import org.example.backend.service.impl.CustomeUserServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,12 +29,13 @@ public class AuthController {
 	private JwtProvider jwtProvider;
 	private PasswordEncoder passwordEncoder;
 	private CustomeUserServiceImpl customeUserService;
-	
-	public AuthController(UserRepository userRepository,CustomeUserServiceImpl customeUserService,PasswordEncoder passwordEncoder,JwtProvider jwtProvider) {
+	private CartService cartService;
+	public AuthController(UserRepository userRepository,CustomeUserServiceImpl customeUserService,PasswordEncoder passwordEncoder,JwtProvider jwtProvider,CartService cartService) {
 		this.userRepository = userRepository;
 		this.customeUserService = customeUserService;
 		this.passwordEncoder = passwordEncoder;
 		this.jwtProvider = jwtProvider;
+		this.cartService= cartService;
 	}
 	
 	@PostMapping("/signup")

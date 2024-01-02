@@ -36,10 +36,10 @@ public class Product {
 	@Column(name = "price")
 	private int price;
 	
-	@Column(name = "discountedPrice")
+	@Column(name = "discounted_price")
 	private int discountedPrice;
 	
-	@Column(name = "discountPercent")
+	@Column(name = "discount_percent")
 	private int discountPercent;
 	
 	@Column(name = "quantity")
@@ -56,7 +56,7 @@ public class Product {
 	@Column(name = "sizes")
 	private Set<Size> sizes = new HashSet<>();
 	
-	@Column(name ="imageUrl")
+	@Column(name ="image_url")
 	private String imageUrl;
 	
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -65,7 +65,7 @@ public class Product {
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Review> review = new ArrayList<>();
 	
-	@Column(name ="numRatings")
+	@Column(name ="num_ratings")
 	private int numRatings;
 	
 	@ManyToOne

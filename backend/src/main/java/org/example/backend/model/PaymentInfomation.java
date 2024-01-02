@@ -7,13 +7,13 @@ import jakarta.persistence.Entity;
 
 public class PaymentInfomation {
 
-	@Column(name = "cardHolderName")
+	@Column(name = "card_holder_name")
 	private String cardHolderName;
 	
-	@Column(name = "cardNumber")
+	@Column(name = "card_number")
 	private String cardNumber;
 	
-	@Column(name = "expirationDate")
+	@Column(name = "expiration_date")
 	private LocalDate expirationDate;
 	
 	@Column(name = "cvv")

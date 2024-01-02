@@ -21,19 +21,20 @@ public class Cart {
 	private Long Id;
 	
 	@OneToOne
-	@JoinColumn(name="userId", nullable =false)
+	@JoinColumn(name="user_id", nullable =false)
 	private User user;
 	
 	@OneToMany(mappedBy = "cart", cascade = CascadeType.ALL,orphanRemoval = true)
-	@Column(name="cartItems")
+	@Column(name="cart_items")
 	private Set<CartItem> cartItems = new HashSet<>();
 	
-	@Column(name="totalPrice")
+	@Column(name="total_price")
 	private double totalPrice;
 	
-	@Column(name="totalItem")
+	@Column(name="total_item")
 	private int totalItem;
 	
+	@Column(name="total_discounted_price")
 	private int totalDiscountedPrice;
 	
 	private int discount;

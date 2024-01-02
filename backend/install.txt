@@ -48,5 +48,11 @@ RatingRequest,ReviewRequest
 ReviewService,ReviewServiceImpl, RatingService, RatingServiceImpl
 ProductController
 
-almost end backend
+almost end backend: miss some controller
+end video 3
+3.3: video 4: add cartService in AuthController
+fix model column name: camel-> snake
+will add the rest of controller and comeback check api by postman in video 4
 
+next to video 11 to do the rest of controller.
+https://youtu.be/o2eh5DW4EA8?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR

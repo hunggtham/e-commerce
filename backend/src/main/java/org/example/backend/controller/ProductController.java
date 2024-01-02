@@ -5,9 +5,10 @@ import java.util.List;
 import org.example.backend.exception.ProductException;
 import org.example.backend.model.Product;
 import org.example.backend.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class ProductController {
 	
+	@Autowired
 	private ProductService productService;
 
 	public ProductController(ProductService productService) {
@@ -33,7 +35,7 @@ public class ProductController {
 		
 		Page<Product>res = productService.getAllProduct(category, color, size, minPrice, maxPrice,minDiscount, sort, stock, pageNumber, pageSize);
 		
-		System.out.println("complete product");
+		System.out.println("complete select all product");
 		return new ResponseEntity<>(res, HttpStatus.ACCEPTED);
 	}
 	
