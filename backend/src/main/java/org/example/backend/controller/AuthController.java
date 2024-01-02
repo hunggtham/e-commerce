@@ -6,7 +6,7 @@ import org.example.backend.model.User;
 import org.example.backend.repository.UserRepository;
 import org.example.backend.request.LoginRequest;
 import org.example.backend.response.AuthResponse;
-import org.example.backend.service.CustomeUserServiceImpl;
+import org.example.backend.service.impl.CustomeUserServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;

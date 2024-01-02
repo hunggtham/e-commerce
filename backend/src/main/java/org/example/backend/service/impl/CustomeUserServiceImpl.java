@@ -1,4 +1,4 @@
-package org.example.backend.service;
+package org.example.backend.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;

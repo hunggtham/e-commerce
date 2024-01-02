@@ -34,3 +34,9 @@ end video 4
 
 
 https://youtu.be/Oe_F0oRdJ2k?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=4748
+#3: implement entity, repository, service, serviceImpl
+3.1 Implement Order, OrderItem, PaymentDetail, OrderException,OrderService, OrderServiceImpl, Cart
+CartItem, CartService, AddItemRequest, CartServiceImpl, CartItemService, CartItemServiceImpl
+implement method: CartItemServiceImpl,
+implement method: CartServiceImpl,
+https://youtu.be/Oe_F0oRdJ2k?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=10964

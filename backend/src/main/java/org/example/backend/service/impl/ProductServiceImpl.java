@@ -1,4 +1,4 @@
-package org.example.backend.service;
+package org.example.backend.service.impl;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -11,6 +11,7 @@ import org.example.backend.model.Product;
 import org.example.backend.repository.CategoryRepository;
 import org.example.backend.repository.ProductRepository;
 import org.example.backend.request.CreateProductRequest;
+import org.example.backend.service.ProductService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;

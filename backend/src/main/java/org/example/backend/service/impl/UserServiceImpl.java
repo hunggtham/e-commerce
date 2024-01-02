@@ -1,4 +1,4 @@
-package org.example.backend.service;
+package org.example.backend.service.impl;
 
 import java.util.Optional;
 
@@ -6,6 +6,7 @@ import org.example.backend.config.JwtProvider;
 import org.example.backend.exception.UserException;
 import org.example.backend.model.User;
 import org.example.backend.repository.UserRepository;
+import org.example.backend.service.UserService;
 import org.springframework.stereotype.Service;
 
 @Service
