@@ -5,11 +5,13 @@ import org.example.backend.model.Cart;
 import org.example.backend.model.CartItem;
 import org.example.backend.model.Product;
 import org.example.backend.model.User;
+import org.example.backend.repository.AddressRepository;
 import org.example.backend.repository.CartRepository;
 import org.example.backend.request.AddItemRequest;
 import org.example.backend.service.CartItemService;
 import org.example.backend.service.CartService;
 import org.example.backend.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,11 +20,13 @@ public class CartServiceImpl implements CartService {
 	public CartRepository cartRepository;
 	public CartItemService cartItemService;
 	public ProductService productService;
+
 	
 	public CartServiceImpl() {
 		// TODO Auto-generated constructor stub
 	}
 	
+	@Autowired
 	public CartServiceImpl(CartRepository cartRepository, CartItemService cartItemService, ProductService productService) {
 		super();
 		this.cartRepository = cartRepository;

@@ -12,11 +12,17 @@ import org.example.backend.repository.ReviewRepository;
 import org.example.backend.request.ReviewRequest;
 import org.example.backend.service.ProductService;
 import org.example.backend.service.ReviewService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ReviewServiceImp implements ReviewService {
 
+	@Autowired
 	private ReviewRepository reviewRepository;
+	@Autowired
 	private ProductRepository productRepository;
+	@Autowired
 	private ProductService productService;
 	
 	

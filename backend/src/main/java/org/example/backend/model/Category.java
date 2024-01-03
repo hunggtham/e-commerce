@@ -28,61 +28,41 @@ public class Category {
 	
 	private int level;
 	
-	
-	
 	public Long getId() {
 		return Id;
 	}
-
-
 
 	public void setId(Long id) {
 		Id = id;
 	}
 
-
-
 	public String getName() {
 		return name;
 	}
-
-
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-
-
 	public Category getParentCategory() {
 		return parentCategory;
 	}
-
-
 
 	public void setParentCategory(Category parentCategory) {
 		this.parentCategory = parentCategory;
 	}
 
-
-
 	public int getLevel() {
 		return level;
 	}
-
-
 
 	public void setLevel(int level) {
 		this.level = level;
 	}
 
-
-
 	public Category() {
 		// TODO Auto-generated constructor stub
 	}
-
-
 
 	public Category(Long id, @NotNull @Size(max = 50) String name, Category parentCategory, int level) {
 		super();

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.example.backend.model.User;
 import org.example.backend.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomeUserServiceImpl implements UserDetailsService{
 
+	@Autowired
 	private UserRepository userRepository;
 	
 	public CustomeUserServiceImpl(UserRepository userRepository) {

@@ -1,10 +1,11 @@
-package org.example.backend.response;
+package org.example.backend.controller;
 
 import java.util.List;
 
 import org.example.backend.exception.ProductException;
 import org.example.backend.model.Product;
 import org.example.backend.request.CreateProductRequest;
+import org.example.backend.response.ApiResponse;
 import org.example.backend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +28,7 @@ public class AdminProductController {
 	
 	@PostMapping("/")
 	public ResponseEntity<Product> createProduct(@RequestBody CreateProductRequest req){
+		
 		Product product = productService.createProduct(req);
 		
 		return new ResponseEntity<Product>(product, HttpStatus.CREATED);
@@ -44,7 +46,7 @@ public class AdminProductController {
 	}
 	@GetMapping("/all")
 	public ResponseEntity<List<Product>> findAllProduct(){
-		List<Product> products = productService.getAllProduct();
+		List<Product> products = productService.findAllProduct();
 		
 		return new ResponseEntity<>(products, HttpStatus.OK);
 	}

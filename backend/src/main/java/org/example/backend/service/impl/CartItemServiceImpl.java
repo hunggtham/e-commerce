@@ -12,13 +12,17 @@ import org.example.backend.repository.CartItemRepository;
 import org.example.backend.repository.CartRepository;
 import org.example.backend.service.CartItemService;
 import org.example.backend.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CartItemServiceImpl implements CartItemService {
 
+	@Autowired
 	private CartItemRepository cartItemRepository;
+	@Autowired
 	private UserService userService;
+	@Autowired
 	private CartRepository cartRepository;
 	
 	

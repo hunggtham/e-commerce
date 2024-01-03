@@ -23,14 +23,14 @@ public class Product {
 
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 	
 	@Column(name = "title")
 	private String title;
 	
-	@Column(name = "discription")
-	private String discription;
+	@Column(name = "description")
+	private String description;
 	
 	
 	@Column(name = "price")
@@ -90,15 +90,13 @@ public class Product {
 		this.title = title;
 	}
 
-	public String getDiscription() {
-		return discription;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDiscription(String discription) {
-		this.discription = discription;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-
-
 
 	public int getPrice() {
 		return price;
@@ -207,13 +205,13 @@ public class Product {
 	public Product() {
 	}
 
-	public Product(Long id, String title, String discription, int price, int discountedPrice,
+	public Product(Long id, String title, String description, int price, int discountedPrice,
 			int discountPercent, int quantity, String brand, String color, Set<Size> sizes, String imageUrl,
 			List<Rating> rating, List<Review> review, int numRatings, Category category, LocalDateTime createAt) {
 		super();
 		Id = id;
 		this.title = title;
-		this.discription = discription;
+		this.description = description;
 		this.price = price;
 		this.discountedPrice = discountedPrice;
 		this.discountPercent = discountPercent;

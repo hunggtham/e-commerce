@@ -59,6 +59,22 @@ https://youtu.be/o2eh5DW4EA8?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR
 3.4: implement AdminOrderController, CartController, OrderController, RatingController, ReviewController, UserController,AdminProductConroller
 end video 11
 
+#3.5 end video 6 and do the rest of controller, service,
+BE
+OrderStatus,PaymentStatus: static constant
+CartItemController
+@Table(name="`order`") in Order model to fix errror
+AddressRepository,OrderItemRepository,OrderRepository
+OrderItemServiceImpl, OrderServiceImpl(implement full method)
+fix findUserProfileByJwt
+FE
+change dummmy data varible name corresponding with BE
+discountPersent-> discountPercent
+topLavel -> topLevel
+secondLavel -> secondLevel
+thirdLavel -> thirdLevel
+
+check
 (FE)
 video 7: Integrating Login and Register APIs with JWT
 video 8: API Integration for Product Management and Shopping Cart Functionality
@@ -67,3 +83,4 @@ video 8: API Integration for Product Management and Shopping Cart Functionality
 
 video 10 - Deploying Your App for Free on the Cloud!
 video 12: Building an Admin Panel for Your eCommerce Store: MERN Stack & Spring with React
+

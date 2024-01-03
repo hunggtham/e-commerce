@@ -7,18 +7,23 @@ import org.example.backend.exception.UserException;
 import org.example.backend.model.User;
 import org.example.backend.repository.UserRepository;
 import org.example.backend.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
 
+	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
 	private JwtProvider jwtProvider;
 	
 	public UserServiceImpl(UserRepository userRepository,JwtProvider jwtProvider) {
 		this.userRepository = userRepository;
 		this.jwtProvider = jwtProvider;
 	}
+	
 	@Override
 	public User findUserById(Long userId) throws UserException {
 		Optional<User> user = userRepository.findById(userId);
@@ -37,7 +42,7 @@ public class UserServiceImpl implements UserService {
 		if(user == null) {
 			throw new UserException("User not found with email:" + email);
 		}
-		return null;
+		return user;
 	}
 
 }
