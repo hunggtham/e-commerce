@@ -2,6 +2,7 @@ package org.example.backend.controller;
 
 import org.example.backend.config.JwtProvider;
 import org.example.backend.exception.UserException;
+import org.example.backend.model.Cart;
 import org.example.backend.model.User;
 import org.example.backend.repository.UserRepository;
 import org.example.backend.request.LoginRequest;
@@ -59,6 +60,8 @@ public class AuthController {
 		createdUser.setLastName(lastName);
 		
 		User savedUser = userRepository.save(createdUser);
+		
+		Cart cart = cartService.createCart(savedUser);
 		
 		Authentication authentication = new UsernamePasswordAuthenticationToken(savedUser.getEmail(), savedUser.getPassword());
 		SecurityContextHolder.getContext().setAuthentication(authentication);

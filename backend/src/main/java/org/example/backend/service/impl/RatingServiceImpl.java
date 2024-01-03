@@ -10,11 +10,11 @@ import org.example.backend.model.User;
 import org.example.backend.repository.RatingRepository;
 import org.example.backend.request.RatingRequest;
 import org.example.backend.service.ProductService;
-import org.example.backend.service.RatingSevice;
+import org.example.backend.service.RatingService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RatingServiceImpl implements RatingSevice {
+public class RatingServiceImpl implements RatingService {
 
 	private RatingRepository ratingRepository;
 	private ProductService productService;

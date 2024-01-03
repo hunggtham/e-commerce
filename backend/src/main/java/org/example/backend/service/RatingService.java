@@ -7,7 +7,7 @@ import org.example.backend.model.Rating;
 import org.example.backend.model.User;
 import org.example.backend.request.RatingRequest;
 
-public interface RatingSevice {
+public interface RatingService {
 	public Rating createRating(RatingRequest req, User user) throws ProductException;
 	
 	public List<Rating>getProductRating(Long productId);

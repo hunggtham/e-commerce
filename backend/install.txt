@@ -49,10 +49,21 @@ ReviewService,ReviewServiceImpl, RatingService, RatingServiceImpl
 ProductController
 
 almost end backend: miss some controller
-end video 3
+end video 5
 3.3: video 4: add cartService in AuthController
 fix model column name: camel-> snake
-will add the rest of controller and comeback check api by postman in video 4
+will add the rest of controller and comeback check api by postman in video 6
 
 next to video 11 to do the rest of controller.
 https://youtu.be/o2eh5DW4EA8?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR
+3.4: implement AdminOrderController, CartController, OrderController, RatingController, ReviewController, UserController,AdminProductConroller
+end video 11
+
+(FE)
+video 7: Integrating Login and Register APIs with JWT
+video 8: API Integration for Product Management and Shopping Cart Functionality
+
+(FE+BE)video 9: Integrating Razorpay Payment Gateway in Your Ecommerce Full Stack Project
+
+video 10 - Deploying Your App for Free on the Cloud!
+video 12: Building an Admin Panel for Your eCommerce Store: MERN Stack & Spring with React
