@@ -16,9 +16,6 @@ const RegisterForm = () => {
     }
   }, [jwt, auth.jwt]);
 
-  const handleNavigateLogin = () => {
-    navigate("/login");
-  };
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
@@ -31,6 +28,9 @@ const RegisterForm = () => {
     };
     console.log("userdata", userData);
     dispatch(register(userData));
+  };
+  const handleNavigateLogin = () => {
+    navigate("/login");
   };
   return (
     <div>
