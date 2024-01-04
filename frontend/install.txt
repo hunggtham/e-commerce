@@ -80,3 +80,12 @@ done Routes(end video 3)
 
 start video 4: 
 https://youtu.be/-Zn_QXN0qtQ?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=25
+
+start video 7: authentication part: login/register, redux, axios
+
+register/login form modal:MUi modal https://mui.com/material-ui/react-modal/
+AuthModal: control LoginForm/RegisterForm
+CustomerRoutes: add /login, /register for <HomePage>
+implement <Navigation> for login and register
+install: npm i redux redux-thunk react-redux axios
+done video 7 but have to fix loginSucess: jwt

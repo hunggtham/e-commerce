@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
@@ -7,39 +7,46 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 
-import { Avatar, Menu, MenuItem } from "@mui/material";
+import { Avatar, Button, Menu, MenuItem } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { navigation } from "./navigationCatagory";
+import AuthModal from "../../Auth/AuthModal";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser, logout } from "../../../State/Auth/Action";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const Navigation = () => {
-  const [open, setOpen] = useState(false);
-
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const location = useLocation();
 
-  const [isLogin] = useState(true);
-
-  // const [openAuthModal, setOpenAuthModal] = useState(false);
-  // const handleOpen = () => {
-  //   setOpenAuthModal(true);
-  // };
+  const [open, setOpen] = useState(false);
+  // const [isLogin] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
+  const [openAuthModal, setOpenAuthModal] = useState(false);
   const openUserMenu = Boolean(anchorEl);
 
-  // const jwt = localStorage.getItem('jwt);
+  const jwt = localStorage.getItem("jwt");
+  const { auth } = useSelector((store) => store);
 
   const handleUserClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
   const handleCloseUserMenu = () => {
-    console.log("handleMenuClose");
     setAnchorEl(null);
+  };
+  const handleOpen = () => {
+    setOpenAuthModal(true);
+  };
+  const handleClose = () => {
+    setOpenAuthModal(false);
+    navigate("/");
   };
 
   const handleCategoryClick = (category, section, item, close) => {
@@ -47,10 +54,30 @@ const Navigation = () => {
     // close();
   };
 
+  useEffect(() => {
+    if (jwt) {
+      dispatch(getUser(jwt));
+    }
+  }, [jwt, auth.jwt]);
+
+  useEffect(() => {
+    if (auth.user) {
+      handleClose();
+    }
+    if (location.pathname === "/login" || location.pathname === "/register") {
+      navigate(-1);
+    }
+  }, [auth.user]);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    handleCloseUserMenu();
+  };
   const handleOrderMenu = () => {
     handleCloseUserMenu();
     navigate("/account/order");
   };
+
   return (
     <div className="bg-white">
       {/* Mobile menu */}
@@ -199,29 +226,31 @@ const Navigation = () => {
                 </div>
 
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-                  {/* loggin */}
-                  {isLogin ? (
+                  {/* signin, signup  */}
+                  {auth.user?.firstName ? (
                     <div className="flow-root -m-2 block p-2 font-medium text-gray-900">
-                      My Page
+                      <MenuItem onClick={handleCloseUserMenu}>Profile</MenuItem>
+                      <MenuItem onClick={handleOrderMenu}>Order</MenuItem>
+                      <MenuItem onClick={handleLogout}>Logout</MenuItem>
                     </div>
                   ) : (
                     <div>
                       <div className="flow-root">
-                        <a
-                          href="#"
+                        <Button
+                          onClick={handleOpen}
                           className="-m-2 block p-2 font-medium text-gray-900"
                         >
                           Sign in
-                        </a>
+                        </Button>
                       </div>
-                      <div className="flow-root">
+                      {/* <div className="flow-root">
                         <a
                           href="#"
                           className="-m-2 block p-2 font-medium text-gray-900"
                         >
                           Create account
                         </a>
-                      </div>
+                      </div> */}
                     </div>
                   )}
                 </div>
@@ -413,24 +442,25 @@ const Navigation = () => {
               <div className="ml-auto flex items-center">
                 {/* signin, signup  */}
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  {isLogin ? (
+                  {auth.user?.firstName ? (
                     <div>
                       <Avatar
                         id="avatar-button"
                         className="text-white"
                         onClick={handleUserClick}
-                        // onClose={handleCloseUserMenu}
                         aria-controls={
                           openUserMenu ? "account-menu" : undefined
                         }
                         aria-haspopup="true"
                         aria-expanded={openUserMenu ? "true" : undefined}
                         sx={{
-                          // bgcolor: deepPurple[500],
+                          bgcolor: "purple",
                           color: "white",
                           cursor: "pointer",
                         }}
-                      ></Avatar>
+                      >
+                        {auth.user?.firstName[0].toUpperCase()}
+                      </Avatar>
                       <Menu
                         id="account-menu"
                         anchorEl={anchorEl}
@@ -444,30 +474,16 @@ const Navigation = () => {
                           Profile
                         </MenuItem>
                         <MenuItem onClick={handleOrderMenu}>Order</MenuItem>
-                        <MenuItem onClick={handleCloseUserMenu}>
-                          Logout
-                        </MenuItem>
+                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
                       </Menu>
                     </div>
                   ) : (
-                    <div>
-                      <a
-                        href="#"
-                        className="text-sm font-medium text-gray-700 hover:text-gray-800"
-                      >
-                        Sign in
-                      </a>
-                      <span
-                        className="h-6 w-px bg-gray-200"
-                        aria-hidden="true"
-                      />
-                      <a
-                        href="#"
-                        className="text-sm font-medium text-gray-700 hover:text-gray-800"
-                      >
-                        Create account
-                      </a>
-                    </div>
+                    <Button
+                      onClick={handleOpen}
+                      className="text-sm font-medium text-gray-700 hover:text-gray-800"
+                    >
+                      Signin
+                    </Button>
                   )}
                 </div>
 
@@ -516,6 +532,8 @@ const Navigation = () => {
           </div>
         </nav>
       </header>
+
+      <AuthModal handleClose={handleClose} open={openAuthModal} />
     </div>
   );
 };

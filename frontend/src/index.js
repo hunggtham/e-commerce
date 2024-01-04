@@ -4,15 +4,16 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import theme from "./theme";
-import { ThemeProvider } from "@emotion/react";
+import { Provider } from "react-redux";
+import store from "./State/store";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      {/* <ThemeProvider theme={theme}> */}
-      <App />
-      {/* </ThemeProvider> */}
+      <Provider store={store}>
+        <App />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );
