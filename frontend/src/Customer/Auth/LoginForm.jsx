@@ -8,15 +8,15 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const jwt = localStorage.getItem("jwt");
+  // const jwt = localStorage.getItem("jwt");
 
-  const { auth } = useSelector((store) => store);
+  // const { auth } = useSelector((store) => store);
 
-  useEffect(() => {
-    if (jwt) {
-      dispatch(getUser(jwt));
-    }
-  }, [jwt, auth.jwt]);
+  // useEffect(() => {
+  //   if (jwt) {
+  //     dispatch(getUser(jwt));
+  //   }
+  // }, [jwt, auth.jwt]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,9 +26,7 @@ const LoginForm = () => {
       email: data.get("email"),
       password: data.get("password"),
     };
-
     dispatch(login(userData));
-    console.log("userdata", userData);
   };
 
   const handleNavigateRegister = () => {

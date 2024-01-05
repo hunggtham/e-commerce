@@ -21,11 +21,12 @@ export const register = (userData) => async (dispatch) => {
   dispatch(registerRequest());
   try {
     const response = await axios.post(`${API_BASE_URL}/auth/signup`, userData);
+    console.log("response", response);
+
     const user = response.data;
     if (user.jwt) {
       localStorage.setItem("jwt", user.jwt);
     }
-    console.log("user in register action ", user);
     dispatch(registerSuccess(user.jwt));
   } catch (error) {
     dispatch(registerFailure(error.message));
@@ -40,10 +41,11 @@ export const login = (userData) => async (dispatch) => {
   try {
     const response = await axios.post(`${API_BASE_URL}/auth/signin`, userData);
     const user = response.data;
+    console.log("response", response);
+
     if (user.jwt) {
       localStorage.setItem("jwt", user.jwt);
     }
-    console.log("user in login action ", user);
 
     dispatch(loginSuccess(user.jwt));
   } catch (error) {
@@ -55,7 +57,7 @@ const getUserRequest = () => ({ type: GET_USER_REQUEST });
 const getUserSuccess = (user) => ({ type: GET_USER_SUCCESS, payload: user });
 const getUserFailure = (error) => ({ type: GET_USER_FAILURE, payload: error });
 
-const jwt = localStorage.getItem("jwt");
+// const jwt = localStorage.getItem("jwt");
 
 export const getUser = (jwt) => async (dispatch) => {
   dispatch(getUserRequest());

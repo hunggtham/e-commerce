@@ -26,7 +26,6 @@ const RegisterForm = () => {
       email: data.get("email"),
       password: data.get("password"),
     };
-    console.log("userdata", userData);
     dispatch(register(userData));
   };
   const handleNavigateLogin = () => {
@@ -93,9 +92,7 @@ const RegisterForm = () => {
 
       <div className="flex justify-center flex-col items-center">
         <div className="py-3 flex items-center">
-          <Typography variant="body1">
-            If you have already account ?{" "}
-          </Typography>
+          <Typography variant="body1">If you have already account ?</Typography>
           <Button
             onClick={handleNavigateLogin}
             size="smaill"

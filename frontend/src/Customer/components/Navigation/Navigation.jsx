@@ -8,7 +8,6 @@ import {
 } from "@heroicons/react/24/outline";
 
 import { Avatar, Button, Menu, MenuItem } from "@mui/material";
-import { deepPurple } from "@mui/material/colors";
 import { useLocation, useNavigate } from "react-router-dom";
 import { navigation } from "./navigationCatagory";
 import AuthModal from "../../Auth/AuthModal";
@@ -32,6 +31,7 @@ const Navigation = () => {
   const openUserMenu = Boolean(anchorEl);
 
   const jwt = localStorage.getItem("jwt");
+
   const { auth } = useSelector((store) => store);
 
   const handleUserClick = (event) => {
@@ -129,7 +129,7 @@ const Navigation = () => {
                             classNames(
                               selected
                                 ? "border-indigo-600 text-indigo-600"
-                                : "border-transparent text-gray-900",
+                                : "border-transparent text-gray-900 ",
                               "flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium"
                             )
                           }
@@ -212,12 +212,12 @@ const Navigation = () => {
                   </Tab.Panels>
                 </Tab.Group>
 
-                <div className="space-y-6 border-t border-gray-200 px-4 py-6">
+                <div className="space-y-6 border-t border-gray-200 px-4 py-6 ">
                   {navigation.pages.map((page) => (
                     <div key={page.name} className="flow-root">
                       <a
                         href={page.href}
-                        className="-m-2 block p-2 font-medium text-gray-900"
+                        className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer"
                       >
                         {page.name}
                       </a>
@@ -404,7 +404,7 @@ const Navigation = () => {
                                                       category,
                                                       section,
                                                       item
-                                                      // close
+                                                      // close,
                                                     );
                                                   }}
                                                   className="hover:text-gray-800"

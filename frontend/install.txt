@@ -89,3 +89,9 @@ CustomerRoutes: add /login, /register for <HomePage>
 implement <Navigation> for login and register
 install: npm i redux redux-thunk react-redux axios
 done video 7 but have to fix loginSucess: jwt
+
+video 8: 
+#implement Cart, Order, Product reducer: Action.js, ActionType.js, Reducer.js
+login error: because id/password is not match(need to implement)
+config apiConfig to get api
+<Product.jsx>: implement for get data from api 

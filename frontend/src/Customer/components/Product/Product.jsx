@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
@@ -27,7 +27,9 @@ import {
   RadioGroup,
 } from "@mui/material";
 import FilterListIcon from "@mui/icons-material/FilterList";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { findProducts } from "../../../State/Product/Action";
 
 export function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -37,6 +39,11 @@ export default function Product() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const param = useParams();
+
+  const dispatch = useDispatch();
+
+  const { product } = useSelector((store) => store);
 
   // use array to save  state of many checkbox
   // const [checkedOptions, setCheckedOptions] = useState({});
@@ -60,6 +67,46 @@ export default function Product() {
   //   });
   // };
 
+  const decodedQueryString = decodeURIComponent(location.search);
+
+  const searchParams = new URLSearchParams(decodedQueryString);
+  const colorValue = searchParams.get("color");
+  const sizeValue = searchParams.get("size");
+  const priceValue = searchParams.get("price");
+  const discountValue = searchParams.get("discount");
+  const sortValue = searchParams.get("sort");
+  const pageNumber = searchParams.get("pageNumber") || 1;
+  const stock = searchParams.get("stock");
+
+  useEffect(() => {
+    const [minPrice, maxPrice] =
+      priceValue === null ? [0, 10000] : priceValue.split("-").map(Number);
+
+    const data = {
+      category: param.levelThree,
+      colors: colorValue || [],
+      sizes: sizeValue || [],
+      minPrice: minPrice,
+      maxPrice,
+      minDiscount: discountValue || 0,
+      sort: sortValue || "price_low",
+      pageNumber: pageNumber - 1,
+      pageSize: 999,
+      stock: stock,
+    };
+    console.log("product data", data);
+    dispatch(findProducts(data));
+  }, [
+    // dispatch,
+    param.levelThree,
+    colorValue,
+    sizeValue,
+    priceValue,
+    discountValue,
+    sortValue,
+    pageNumber,
+    stock,
+  ]);
   const handleCheckboxFilter = (value, sectionId) => {
     const searchParams = new URLSearchParams(location.search);
     let filterValue = searchParams.getAll(sectionId);
@@ -143,7 +190,10 @@ export default function Product() {
                     >
                       {subCategories.map((category) => (
                         <li key={category.name}>
-                          <a href={category.href} className="block px-2 py-3">
+                          <a
+                            href={category.href}
+                            className="block px-2 py-3 cursor-pointer"
+                          >
                             {category.name}
                           </a>
                         </li>
@@ -359,7 +409,9 @@ export default function Product() {
                 >
                   {subCategories.map((category) => (
                     <li key={category.name}>
-                      <a href={category.href}>{category.name}</a>
+                      <a href={category.href} className="cursor-pointer">
+                        {category.name}
+                      </a>
                     </li>
                   ))}
                 </ul>
@@ -505,9 +557,10 @@ export default function Product() {
               {/* Product grid */}
               <div className="lg:!col-span-4 w-full">
                 <div className="flex flex-wrap justify-center bg-white py-5">
-                  {mens_kurta.map((item, index) => (
-                    <ProductCard product={item} key={index} />
-                  ))}
+                  {product.products &&
+                    product.products?.content?.map((item, index) => (
+                      <ProductCard product={item} key={index} />
+                    ))}
                 </div>
               </div>
             </div>

@@ -6,7 +6,7 @@ export const navigation = {
       featured: [
         {
           name: "New Arrivals",
-          href: "/",
+          id: "new-arrivals",
           imageSrc:
             "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
           imageAlt:
@@ -14,7 +14,8 @@ export const navigation = {
         },
         {
           name: "Basic Tees",
-          href: "/",
+          // href: "/",
+          id: "basic-tees",
           imageSrc:
             "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
           imageAlt:
@@ -26,8 +27,8 @@ export const navigation = {
           id: "clothing",
           name: "Clothing",
           items: [
-            { name: "Tops", id: "top", href: `{women/clothing/tops}` },
-            { name: "Dresses", id: "women_dress", href: "#" },
+            { name: "Tops", id: "top" },
+            { name: "Dresses", id: "women_dress" },
             { name: "Women Jeans", id: "women_jeans" },
             { name: "Lengha Choli", id: "lengha_choli" },
             { name: "Sweaters", id: "sweater" },
@@ -54,11 +55,11 @@ export const navigation = {
           id: "brands",
           name: "Brands",
           items: [
-            { name: "Full Nelson", id: "#" },
-            { name: "My Way", id: "#" },
-            { name: "Re-Arranged", id: "#" },
-            { name: "Counterfeit", id: "#" },
-            { name: "Significant Other", id: "#" },
+            { name: "Full Nelson", id: "full-nelson" },
+            { name: "My Way", id: "my-way" },
+            { name: "Re-Arranged", id: "re-arranged" },
+            { name: "Counterfeit", id: "counterfeit" },
+            { name: "Significant Other", id: "significan-other" },
           ],
         },
       ],
@@ -69,7 +70,7 @@ export const navigation = {
       featured: [
         {
           name: "New Arrivals",
-          id: "#",
+          id: "new-arrivals",
           imageSrc:
             "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
           imageAlt:
@@ -77,7 +78,7 @@ export const navigation = {
         },
         {
           name: "Artwork Tees",
-          id: "#",
+          id: "artwork-tees",
           imageSrc:
             "https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg",
           imageAlt:
@@ -124,7 +125,7 @@ export const navigation = {
     },
   ],
   pages: [
-    { name: "Company", id: "/" },
-    { name: "Stores", id: "/" },
+    { name: "Company", id: "company", href: "/company" },
+    { name: "Stores", id: "stores", href: "/stores" },
   ],
 };
