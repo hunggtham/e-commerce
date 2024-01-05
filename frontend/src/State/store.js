@@ -7,7 +7,7 @@ import { orderReducers } from "./Order/Reducer";
 
 const rootReducers = combineReducers({
   auth: authReducer,
-  product: customerProductReducer,
+  products: customerProductReducer,
   cart: cartReducers,
   order: orderReducers,
 });

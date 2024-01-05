@@ -114,7 +114,7 @@ public class Product {
 		this.discountedPrice = discountedPrice;
 	}
 
-	public int getDiscountPercent(int i) {
+	public int getDiscountPercent() {
 		return discountPercent;
 	}
 

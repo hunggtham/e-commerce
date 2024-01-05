@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { RadioGroup } from "@headlessui/react";
 import {
@@ -12,7 +12,9 @@ import {
 import ProductReviewCard from "./ProductReviewCard";
 import { mens_kurta } from "../../../dummy-products-data/Men/men_kurta";
 import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { findProductsById } from "../../../State/Product/Action";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -74,8 +76,16 @@ function classNames(...classes) {
 
 export default function ProductDetail() {
   const navigate = useNavigate();
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
+
+  const [selectedSize, setSelectedSize] = useState("");
+  const params = useParams();
+  const dispatch = useDispatch();
+
+  const { products } = useSelector((store) => store);
+  console.log("get products detail in ProductDetail", products);
+  useEffect(() => {
+    dispatch(findProductsById(params.productId));
+  }, [params.productId]);
 
   const handleAddToCart = () => {
     navigate("/cart");
@@ -129,14 +139,15 @@ export default function ProductDetail() {
             {/* <div className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block"> */}
             <div className="overflow-hidden rounded-lg max-w-[30rem] max-h[35rem]">
               <img
-                src={product.images[0].src}
-                alt={product.images[0].alt}
+                src={products?.product?.imageUrl}
+                alt={products?.product?.title}
                 className="h-full w-full object-cover object-center"
               />
             </div>
             {/* <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8"> */}
             <div className="flex flex-wrap space-x-5 justify-center">
               {/* <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg"> */}
+
               {product.images.map((image) => (
                 //lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg
                 <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg max-w-[5rem] max-h-[5rem] mt-4 ">
@@ -156,10 +167,10 @@ export default function ProductDetail() {
             <div className="lg:col-span-2">
               {/* <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl"> */}
               <h1 className="text-lg lg:text-xl font-semibold text-gray-900">
-                {product.name}
+                {products?.product?.brand}
               </h1>
               <h2 className="text-lg lg:text-xl text-gray-900 opacity-60 pt-1">
-                Lorem ipsum dolor sit amet.
+                {products?.product?.title}
               </h2>
             </div>
 
@@ -171,9 +182,15 @@ export default function ProductDetail() {
               </p> */}
 
               <div className="flex space-x-5 items-center text-lg lg:text-xl text-gray-900 mt-6">
-                <p className="font-semibold">{product.price}</p>
-                <p className="opacity-50 line-through">150%</p>
-                <p className="text-green-600 font-semibold">5% off</p>
+                <p className="font-semibold">
+                  {products.product?.discountedPrice}
+                </p>
+                <p className="opacity-50 line-through">
+                  {products.product?.price}
+                </p>
+                <p className="text-green-600 font-semibold">
+                  {products.product?.discountPercent}% off
+                </p>
               </div>
               {/* Reviews */}
               <div className="mt-6 flex items-center space-x-4">

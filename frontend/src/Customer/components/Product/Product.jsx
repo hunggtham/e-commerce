@@ -44,7 +44,7 @@ export default function Product() {
 
   const dispatch = useDispatch();
 
-  const { product } = useSelector((store) => store);
+  const { products } = useSelector((store) => store);
 
   // use array to save  state of many checkbox
   // const [checkedOptions, setCheckedOptions] = useState({});
@@ -563,8 +563,8 @@ export default function Product() {
               {/* Product grid */}
               <div className="lg:!col-span-4 w-full">
                 <div className="flex flex-wrap justify-center bg-white py-5">
-                  {product.products &&
-                    product.products?.content?.map((item, index) => (
+                  {products.products &&
+                    products.products?.content?.map((item, index) => (
                       <ProductCard product={item} key={index} />
                     ))}
                 </div>
@@ -574,7 +574,7 @@ export default function Product() {
           <section className="w-full px=[3.6rem]">
             <div className="px-4 py-5 flex justify-center ">
               <Pagination
-                count={product.products?.totalPages}
+                count={products.products?.totalPages}
                 color="primary"
                 onChange={handlePaginationChange}
               />
