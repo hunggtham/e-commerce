@@ -95,3 +95,6 @@ video 8:
 login error: because id/password is not match(need to implement)
 config apiConfig to get api
 <Product.jsx>: implement for get data from api 
+
+#implement pagination of <Product.jsx>
+done video time : https://youtu.be/khfWkVqy0cE?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=5923

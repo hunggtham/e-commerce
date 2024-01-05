@@ -23,6 +23,7 @@ import {
   FormControlLabel,
   FormGroup,
   FormLabel,
+  Pagination,
   Radio,
   RadioGroup,
 } from "@mui/material";
@@ -91,10 +92,9 @@ export default function Product() {
       minDiscount: discountValue || 0,
       sort: sortValue || "price_low",
       pageNumber: pageNumber - 1,
-      pageSize: 999,
+      pageSize: 12,
       stock: stock,
     };
-    console.log("product data", data);
     dispatch(findProducts(data));
   }, [
     // dispatch,
@@ -134,6 +134,12 @@ export default function Product() {
     navigate({ search: `?${query}` });
   };
 
+  const handlePaginationChange = (event, value) => {
+    const searchParams = new URLSearchParams(location.search);
+    searchParams.set("pageNumber", value);
+    const query = searchParams.toString();
+    navigate({ search: `?${query}` });
+  };
   return (
     <div className="bg-white">
       <div>
@@ -563,6 +569,15 @@ export default function Product() {
                     ))}
                 </div>
               </div>
+            </div>
+          </section>
+          <section className="w-full px=[3.6rem]">
+            <div className="px-4 py-5 flex justify-center ">
+              <Pagination
+                count={product.products?.totalPages}
+                color="primary"
+                onChange={handlePaginationChange}
+              />
             </div>
           </section>
         </main>
