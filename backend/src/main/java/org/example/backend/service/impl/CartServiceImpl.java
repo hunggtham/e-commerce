@@ -51,17 +51,17 @@ public class CartServiceImpl implements CartService {
 		CartItem isPresent = cartItemService.isCartItemExist(cart, product,req.getSize(),userId);
 		
 		if(isPresent ==null) {
-			CartItem cartItem = new CartItem();
-			cartItem.setProduct(product);
-			cartItem.setCart(cart);
-			cartItem.setQuantity(req.getQuantity());
-			cartItem.setUserId(userId);
+			CartItem cartItems = new CartItem();
+			cartItems.setProduct(product);
+			cartItems.setCart(cart);
+			cartItems.setQuantity(req.getQuantity());
+			cartItems.setUserId(userId);
 			
 			int price = req.getQuantity() * product.getDiscountedPrice();
-			cartItem.setPrice(price);
-			cartItem.setSize(req.getSize());
+			cartItems.setPrice(price);
+			cartItems.setSize(req.getSize());
 			
-			CartItem createdCartItem = cartItemService.createCartItem(cartItem);
+			CartItem createdCartItem = cartItemService.createCartItem(cartItems);
 			cart.getCartItems().add(createdCartItem);
 			
 		}

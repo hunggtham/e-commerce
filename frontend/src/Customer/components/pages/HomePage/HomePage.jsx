@@ -2,9 +2,7 @@ import React from "react";
 import MainCrosel from "../../HomeCarosel/MainCarosel";
 import HomeSectionCarosel from "../../HomeSectionCarosel/HomeSectionCarosel";
 import { mens_kurta } from "../../../../dummy-products-data/Men/men_kurta";
-import { kurtaPage1 } from "../../../../dummy-products-data/Kurta/kurta";
 import { dressPage1 } from "../../../../dummy-products-data/dress/page1";
-import { lengha_page1 } from "../../../../dummy-products-data/Women/LenghaCholi";
 
 const HomePage = () => {
   return (

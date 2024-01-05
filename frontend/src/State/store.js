@@ -8,8 +8,8 @@ import { orderReducers } from "./Order/Reducer";
 const rootReducers = combineReducers({
   auth: authReducer,
   products: customerProductReducer,
-  cart: cartReducers,
-  order: orderReducers,
+  carts: cartReducers,
+  orders: orderReducers,
 });
 
 const store = createStore(rootReducers, applyMiddleware(thunk));

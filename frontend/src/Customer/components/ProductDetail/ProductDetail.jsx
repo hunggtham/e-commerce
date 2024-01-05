@@ -15,7 +15,7 @@ import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { findProductsById } from "../../../State/Product/Action";
-
+import { addItemToCart } from "../../../State/Cart/Action";
 const product = {
   name: "Basic Tee 6-Pack",
   price: "$192",
@@ -88,7 +88,12 @@ export default function ProductDetail() {
   }, [params.productId]);
 
   const handleAddToCart = () => {
-    navigate("/cart");
+    if (selectedSize.name) {
+      const data = { productId: params.productId, size: selectedSize.name };
+      console.log("handleAddToCart", data);
+      dispatch(addItemToCart(data));
+      navigate("/cart");
+    }
   };
 
   return (

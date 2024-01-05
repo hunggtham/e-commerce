@@ -28,7 +28,7 @@ export const cartReducers = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        cartItem: [...state.cartItems, action.payload.cartItems],
+        cartItems: [...state.cartItems, action.payload.cartItems],
       };
 
     case ADD_ITEM_TO_CART_FAILURE:

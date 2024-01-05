@@ -100,3 +100,6 @@ config apiConfig to get api
 done video time : https://youtu.be/khfWkVqy0cE?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=5923
 #implement <ProductDetail> infomation of Product
 https://youtu.be/khfWkVqy0cE?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=6927 
+
+implementing handleCartUpdate and Remove
+https://youtu.be/khfWkVqy0cE?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=8327
