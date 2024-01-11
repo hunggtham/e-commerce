@@ -84,3 +84,4 @@ video 8: API Integration for Product Management and Shopping Cart Functionality
 video 10 - Deploying Your App for Free on the Cloud!
 video 12: Building an Admin Panel for Your eCommerce Store: MERN Stack & Spring with React
 
+implement Payment: PaymentController, PaymentLinkResponse

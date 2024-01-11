@@ -1,26 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CartItem from "./CartItem";
 import { Box, Button, Divider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { getCart } from "../../../State/Cart/Action";
 
 const Cart = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { carts } = useSelector((store) => store);
-  console.log("check cart in Cart.jsx", carts);
-  const handleBuy = () => {
-    navigate("/payment?step=3");
-  };
+  const carts = useSelector((store) => store.carts.cart);
+  const isLoading = useSelector((store) => store.carts.isLoading);
+  console.log("carts", carts);
+
+  // if (!isLoading) {
+  //   dispatch(getCart());
+  // }
+
   useEffect(() => {
     dispatch(getCart());
   }, []);
+  const handleBuy = () => {
+    navigate("/payment?step=2");
+  };
   return (
     <div>
       <div className="lg:grid grid-cols-3 lg:px-16 relative">
         <div className="col-span-2">
-          {carts?.cart.cartItems.map((cartItem) => (
+          {carts?.cartItems?.map((cartItem) => (
             <CartItem cartItem={cartItem} />
           ))}
         </div>
@@ -39,11 +45,11 @@ const Cart = () => {
               <div className="flex justify-between pt-3 text-black">
                 {/* <span>Price 5 item</span> */}
                 <span>Price</span>
-                <span>{carts.cart?.totalPrice}$</span>
+                <span>{carts?.totalPrice}$</span>
               </div>
               <div className="flex justify-between pt-3 ">
                 <span>Discount</span>
-                <span className="text-green-600">-{carts.cart?.discount}$</span>
+                <span className="text-green-600">-{carts?.discount}$</span>
               </div>
               <div className="flex justify-between pt-3 ">
                 <span>Delivery Cost</span>
@@ -52,7 +58,7 @@ const Cart = () => {
               <div className="flex justify-between pt-3  font-bold">
                 <span>Total Amount</span>
                 <span className="text-green-600">
-                  {carts?.cart.totalDiscountedPrice}
+                  {carts?.totalDiscountedPrice}
                 </span>
               </div>
             </div>
@@ -72,4 +78,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default connect()(Cart);

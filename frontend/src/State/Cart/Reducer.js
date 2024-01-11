@@ -54,6 +54,7 @@ export const cartReducers = (state = initialState, action) => {
       return {
         ...state,
         cartItems: state.cartItems.filter((item) => item.id !== action.payload),
+        // cartItems: action.payload,
         loading: false,
       };
     case UPDATE_CART_ITEM_SUCCESS:

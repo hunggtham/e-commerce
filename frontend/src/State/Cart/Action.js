@@ -40,11 +40,11 @@ export const addItemToCart = (reqData) => async (dispatch) => {
   }
 };
 
-export const removeCartItem = (reqData) => async (dispatch) => {
+export const removeCartItem = (cartItemId) => async (dispatch) => {
   dispatch({ type: REMOVE_CART_ITEM_REQUEST });
 
   try {
-    const { data } = await api.delete(`/api/cart/${reqData.cartItemId}`);
+    const { data } = await api.delete(`/api/cart/${cartItemId}`);
     dispatch({ type: REMOVE_CART_ITEM_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: REMOVE_CART_ITEM_FAILURE, payload: error.message });

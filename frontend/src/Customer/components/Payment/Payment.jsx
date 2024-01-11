@@ -8,7 +8,6 @@ import Typography from "@mui/material/Typography";
 import { useLocation } from "react-router-dom";
 import DeliveryForm from "./DeliveryForm";
 import OrderSummary from "./OrderSummary";
-import Error404 from "../ErrorPage/Error404";
 
 const steps = ["Login", "Add Delivery Infomation", "Order Summary", "Payment"];
 

@@ -23,6 +23,7 @@ export const orderReducers = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        error: null,
       };
     case CREATE_ORDER_SUCCESS:
       return {

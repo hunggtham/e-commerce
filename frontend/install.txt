@@ -103,3 +103,6 @@ https://youtu.be/khfWkVqy0cE?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=6927
 
 implementing handleCartUpdate and Remove
 https://youtu.be/khfWkVqy0cE?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=8327
+
+implement PaymentSucess
+https://youtu.be/EEwngSnv8LU?list=PL7Oro2kvkIzK9X9ctS7bK3VVq0zsEYQsR&t=4778

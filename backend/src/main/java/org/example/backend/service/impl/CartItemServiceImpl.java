@@ -75,10 +75,10 @@ public class CartItemServiceImpl implements CartItemService {
 	public void removeCartItem(Long userId, Long cartItemId) throws CartItemException, UserException {
 		CartItem cartItem = findCartItemById(cartItemId);
 		
-		User user = userService.findUserById(cartItem.getId());
+		User user = userService.findUserById(cartItem.getUserId());
 		
 		User reqUser = userService.findUserById(userId);
-		
+
 		if(user.getId().equals(reqUser.getId())){
 			cartItemRepository.deleteById(cartItemId);
 		}else {
