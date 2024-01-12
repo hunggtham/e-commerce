@@ -26,9 +26,11 @@ const PaymentSuccess = () => {
   });
 
   useEffect(() => {
-    const data = { orderId, paymentId };
-    dispatch(getOrderById(orderId));
-    dispatch(updatePayment(data));
+    if (paymentId) {
+      const data = { orderId, paymentId };
+      dispatch(getOrderById(orderId));
+      dispatch(updatePayment(data));
+    }
   }, [orderId, paymentId, dispatch]);
 
   return (
@@ -58,17 +60,18 @@ const PaymentSuccess = () => {
                 <div className="flex items-center">
                   <img
                     className="w-[5rem] h-[5rem] object-cover object-top"
-                    src="https://rukminim1.flixcart.com/image/612/612/l5h2xe80/kurta/x/6/n/xl-kast-tile-green-majestic-man-original-imagg4z33hu4kzpv.jpeg?q=70"
+                    // src="https://rukminim1.flixcart.com/image/612/612/l5h2xe80/kurta/x/6/n/xl-kast-tile-green-majestic-man-original-imagg4z33hu4kzpv.jpeg?q=70"
+                    src={item?.product?.imageUrl}
                     alt=""
                   />
                   <div className="ml-5 space-y-2">
-                    <p>item.product.title</p>
+                    <p>{item?.product?.title}</p>
                     <div className="opacity-50 text-xs font-semibold sapce-x-5">
-                      <span>Color: item.color</span>
-                      <span>Size: item.size</span>
+                      <span>Color: {item?.color}</span>
+                      <span>Size: {item?.size}</span>
                     </div>
-                    <p>SellerL item.product.brand</p>
-                    <p>$item.price</p>
+                    <p>Seller: {item?.product?.brand}</p>
+                    <p>{item?.price}</p>
                   </div>
                 </div>
               </Grid>
