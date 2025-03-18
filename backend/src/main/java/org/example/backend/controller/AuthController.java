@@ -1,5 +1,8 @@
 package org.example.backend.controller;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import org.example.backend.config.JwtProvider;
 import org.example.backend.exception.UserException;
 import org.example.backend.model.Cart;
@@ -32,6 +35,9 @@ public class AuthController {
 	private CustomeUserServiceImpl customeUserService;
 	private CartService cartService;
 	
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSSSS");
+	String formattedDate = LocalDateTime.now().format(formatter);
+	
 	public AuthController(UserRepository userRepository,CustomeUserServiceImpl customeUserService,PasswordEncoder passwordEncoder,JwtProvider jwtProvider,CartService cartService) {
 		this.userRepository = userRepository;
 		this.customeUserService = customeUserService;
@@ -59,6 +65,7 @@ public class AuthController {
 		createdUser.setPassword(passwordEncoder.encode(password));
 		createdUser.setFirstName(firstName);
 		createdUser.setLastName(lastName);
+		createdUser.setCreateAt(formattedDate);
 		
 		User savedUser = userRepository.save(createdUser);
 		

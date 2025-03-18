@@ -52,7 +52,7 @@ public class User {
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private List<Review> review = new ArrayList<>();
 	
-	private LocalDateTime createAt;
+	private String createAt;
 	
 	
 	
@@ -188,13 +188,13 @@ public class User {
 
 
 
-	public LocalDateTime getCreateAt() {
+	public String getCreateAt() {
 		return createAt;
 	}
 
 
 
-	public void setCreateAt(LocalDateTime createAt) {
+	public void setCreateAt(String createAt) {
 		this.createAt = createAt;
 	}
 
